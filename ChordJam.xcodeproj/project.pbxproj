@@ -9,13 +9,12 @@
 /* Begin PBXBuildFile section */
 		290068E82C22A29F000DCE81 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068E72C22A29E000DCE81 /* ProgressBar.swift */; };
 		290068EA2C22A2A8000DCE81 /* OnboardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068E92C22A2A8000DCE81 /* OnboardImage.swift */; };
-		290068EC2C22A2AE000DCE81 /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068EB2C22A2AE000DCE81 /* Introduction.swift */; };
-		290068EE2C22A2B4000DCE81 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068ED2C22A2B4000DCE81 /* Onboarding.swift */; };
+		290068EC2C22A2AE000DCE81 /* IntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068EB2C22A2AE000DCE81 /* IntroductionView.swift */; };
+		290068EE2C22A2B4000DCE81 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068ED2C22A2B4000DCE81 /* OnboardingView.swift */; };
 		290069162C2511A5000DCE81 /* StringDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290069152C2511A5000DCE81 /* StringDetection.swift */; };
 		294FD0D02C29394800031E61 /* LevelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294FD0CF2C29394800031E61 /* LevelController.swift */; };
 		294FD0D42C29ACF100031E61 /* SuccessCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294FD0D32C29ACF100031E61 /* SuccessCase.swift */; };
 		A2B8E3552C1BDE87008A0E5A /* ChordJamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B8E3542C1BDE87008A0E5A /* ChordJamApp.swift */; };
-		A2B8E3572C1BDE87008A0E5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B8E3562C1BDE87008A0E5A /* ContentView.swift */; };
 		A2B8E3592C1BDE88008A0E5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2B8E3582C1BDE88008A0E5A /* Assets.xcassets */; };
 		A2B8E35C2C1BDE88008A0E5A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2B8E35B2C1BDE88008A0E5A /* Preview Assets.xcassets */; };
 		A2B8E3662C1BDE88008A0E5A /* ChordJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B8E3652C1BDE88008A0E5A /* ChordJamTests.swift */; };
@@ -30,7 +29,6 @@
 		A2C4C2012C23CD4C002FEEAB /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4C2002C23CD4C002FEEAB /* NavBar.swift */; };
 		BA5714462C2C08F3004DD0A3 /* BadgeNotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5714452C2C08F3004DD0A3 /* BadgeNotif.swift */; };
 		BA5E60F82C2A700400BA943E /* chordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5E60F72C2A700400BA943E /* chordModel.swift */; };
-		BA5E60FA2C2A702C00BA943E /* ChordDetection.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BA5E60F92C2A702C00BA943E /* ChordDetection.mlmodel */; };
 		BA5E61002C2A709000BA943E /* CombinedLevels2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5E60FB2C2A709000BA943E /* CombinedLevels2View.swift */; };
 		BA5E61012C2A709000BA943E /* CombinedLevels3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5E60FC2C2A709000BA943E /* CombinedLevels3View.swift */; };
 		BA5E61022C2A709000BA943E /* CombinedLevels4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5E60FD2C2A709000BA943E /* CombinedLevels4View.swift */; };
@@ -42,6 +40,8 @@
 		BA5E61162C2A70D800BA943E /* Level2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5E610F2C2A70D800BA943E /* Level2View.swift */; };
 		BA5E61172C2A70D800BA943E /* ModalLevel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5E61102C2A70D800BA943E /* ModalLevel2.swift */; };
 		BA5E611A2C2A70FC00BA943E /* FinishLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5E61182C2A70FC00BA943E /* FinishLevel.swift */; };
+		FB186E4A2C364AB800A7DDF8 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB186E492C364AB800A7DDF8 /* AppViewModel.swift */; };
+		FB186E4D2C3659E100A7DDF8 /* GameCenterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB186E4C2C3659E100A7DDF8 /* GameCenterRepository.swift */; };
 		FB3A97AD2C2B924200EB2B92 /* ChordConditionalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3A97AC2C2B924200EB2B92 /* ChordConditionalModel.swift */; };
 		FB7D9CE02C2A7FA300D47241 /* GuitarComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D9CDB2C2A7FA300D47241 /* GuitarComponents.swift */; };
 		FB7D9CE12C2A7FA300D47241 /* Level6View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D9CDD2C2A7FA300D47241 /* Level6View.swift */; };
@@ -61,6 +61,7 @@
 		FBD1C2212C2C3041009D356F /* PauseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1C2202C2C3041009D356F /* PauseComponent.swift */; };
 		FBD1C2232C2C3CA9009D356F /* LearnSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1C2222C2C3CA9009D356F /* LearnSong.swift */; };
 		FBD1C2252C2C52C7009D356F /* MusicPlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1C2242C2C52C7009D356F /* MusicPlayerState.swift */; };
+		FBFBCF8A2C39B6B600FE24C3 /* ChordDetection.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = FBFBCF892C39B6B600FE24C3 /* ChordDetection.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,8 +84,8 @@
 /* Begin PBXFileReference section */
 		290068E72C22A29E000DCE81 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		290068E92C22A2A8000DCE81 /* OnboardImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardImage.swift; sourceTree = "<group>"; };
-		290068EB2C22A2AE000DCE81 /* Introduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
-		290068ED2C22A2B4000DCE81 /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		290068EB2C22A2AE000DCE81 /* IntroductionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionView.swift; sourceTree = "<group>"; };
+		290068ED2C22A2B4000DCE81 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		290069152C2511A5000DCE81 /* StringDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringDetection.swift; sourceTree = "<group>"; };
 		294FD0CE2C2936F100031E61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		294FD0CF2C29394800031E61 /* LevelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelController.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		A284208C2C2C63A10073E9E2 /* ChordJam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChordJam.entitlements; sourceTree = "<group>"; };
 		A2B8E3512C1BDE87008A0E5A /* ChordJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChordJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B8E3542C1BDE87008A0E5A /* ChordJamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordJamApp.swift; sourceTree = "<group>"; };
-		A2B8E3562C1BDE87008A0E5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A2B8E3582C1BDE88008A0E5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2B8E35B2C1BDE88008A0E5A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A2B8E3612C1BDE88008A0E5A /* ChordJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChordJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +109,6 @@
 		A2C4C2002C23CD4C002FEEAB /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		BA5714452C2C08F3004DD0A3 /* BadgeNotif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeNotif.swift; sourceTree = "<group>"; };
 		BA5E60F72C2A700400BA943E /* chordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chordModel.swift; sourceTree = "<group>"; };
-		BA5E60F92C2A702C00BA943E /* ChordDetection.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ChordDetection.mlmodel; sourceTree = "<group>"; };
 		BA5E60FB2C2A709000BA943E /* CombinedLevels2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedLevels2View.swift; sourceTree = "<group>"; };
 		BA5E60FC2C2A709000BA943E /* CombinedLevels3View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedLevels3View.swift; sourceTree = "<group>"; };
 		BA5E60FD2C2A709000BA943E /* CombinedLevels4View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedLevels4View.swift; sourceTree = "<group>"; };
@@ -121,6 +120,8 @@
 		BA5E610F2C2A70D800BA943E /* Level2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2View.swift; sourceTree = "<group>"; };
 		BA5E61102C2A70D800BA943E /* ModalLevel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalLevel2.swift; sourceTree = "<group>"; };
 		BA5E61182C2A70FC00BA943E /* FinishLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishLevel.swift; sourceTree = "<group>"; };
+		FB186E492C364AB800A7DDF8 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		FB186E4C2C3659E100A7DDF8 /* GameCenterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterRepository.swift; sourceTree = "<group>"; };
 		FB3A97AC2C2B924200EB2B92 /* ChordConditionalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordConditionalModel.swift; sourceTree = "<group>"; };
 		FB7D9CDB2C2A7FA300D47241 /* GuitarComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarComponents.swift; sourceTree = "<group>"; };
 		FB7D9CDD2C2A7FA300D47241 /* Level6View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6View.swift; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		FBD1C2202C2C3041009D356F /* PauseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseComponent.swift; sourceTree = "<group>"; };
 		FBD1C2222C2C3CA9009D356F /* LearnSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSong.swift; sourceTree = "<group>"; };
 		FBD1C2242C2C52C7009D356F /* MusicPlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerState.swift; sourceTree = "<group>"; };
+		FBFBCF892C39B6B600FE24C3 /* ChordDetection.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = ChordDetection.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,26 +193,19 @@
 		A2B8E3532C1BDE87008A0E5A /* ChordJam */ = {
 			isa = PBXGroup;
 			children = (
-				A284208C2C2C63A10073E9E2 /* ChordJam.entitlements */,
-				FB7D9CEE2C2A7FDE00D47241 /* Utils */,
 				FB7D9CEB2C2A7FD400D47241 /* Assets */,
-				FB7D9CE62C2A7FCD00D47241 /* Models */,
-				BA5E60F62C2A6FE200BA943E /* ML Model */,
-				294FD0CE2C2936F100031E61 /* Info.plist */,
-				A2C4C1ED2C23CC56002FEEAB /* Views */,
-				290068EB2C22A2AE000DCE81 /* Introduction.swift */,
-				290068ED2C22A2B4000DCE81 /* Onboarding.swift */,
-				294FD0D32C29ACF100031E61 /* SuccessCase.swift */,
-				290069152C2511A5000DCE81 /* StringDetection.swift */,
-				290068E92C22A2A8000DCE81 /* OnboardImage.swift */,
-				290068E72C22A29E000DCE81 /* ProgressBar.swift */,
-				A2B8E3542C1BDE87008A0E5A /* ChordJamApp.swift */,
-				A2B8E3562C1BDE87008A0E5A /* ContentView.swift */,
 				A2B8E3582C1BDE88008A0E5A /* Assets.xcassets */,
-				FBD1C2222C2C3CA9009D356F /* LearnSong.swift */,
-				A2B8E35A2C1BDE88008A0E5A /* Preview Content */,
-				294FD0CF2C29394800031E61 /* LevelController.swift */,
+				A284208C2C2C63A10073E9E2 /* ChordJam.entitlements */,
+				FB31D38A2C2E3BE60034CEAF /* Core */,
+				FB31D38C2C2E3C0B0034CEAF /* Data */,
 				A2C4C1EB2C23CC36002FEEAB /* GameCenterManager.swift */,
+				294FD0CE2C2936F100031E61 /* Info.plist */,
+				294FD0CF2C29394800031E61 /* LevelController.swift */,
+				FB7D9CE62C2A7FCD00D47241 /* Models */,
+				A2B8E35A2C1BDE88008A0E5A /* Preview Content */,
+				290069152C2511A5000DCE81 /* StringDetection.swift */,
+				FB7D9CEE2C2A7FDE00D47241 /* Utils */,
+				A2C4C1ED2C23CC56002FEEAB /* Views */,
 			);
 			path = ChordJam;
 			sourceTree = "<group>";
@@ -243,20 +238,21 @@
 		A2C4C1ED2C23CC56002FEEAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				290068EB2C22A2AE000DCE81 /* IntroductionView.swift */,
+				290068ED2C22A2B4000DCE81 /* OnboardingView.swift */,
+				FB186E4B2C364BCB00A7DDF8 /* Main Menu */,
+				A2C4C1FE2C23CD3A002FEEAB /* ProfileView.swift */,
 				A2C4C1F82C23CD04002FEEAB /* ChallengesView.swift */,
 				A2C4C1FC2C23CD2D002FEEAB /* CollectionView.swift */,
-				BA5E61182C2A70FC00BA943E /* FinishLevel.swift */,
 				BA5E60FF2C2A709000BA943E /* CombinedLevels */,
 				FBD1C21F2C2C1681009D356F /* Components */,
+				BA5E61182C2A70FC00BA943E /* FinishLevel.swift */,
 				A2C4C1FA2C23CD1E002FEEAB /* LeaderboardView.swift */,
+				FB7D9CF22C2A8B8E00D47241 /* Level 1 */,
+				BA5E61112C2A70D800BA943E /* Level 2 */,
+				BA5E610B2C2A70D800BA943E /* Level 3 */,
+				BA5E610E2C2A70D800BA943E /* Level 4 */,
 				FB7D9CDF2C2A7FA300D47241 /* Level 6 */,
-				FB7D9CF22C2A8B8E00D47241 /* Level1 */,
-				BA5E61112C2A70D800BA943E /* Level2 */,
-				BA5E610B2C2A70D800BA943E /* Level3 */,
-				BA5E610E2C2A70D800BA943E /* Level4 */,
-				A2C4C1E92C23CC11002FEEAB /* MainMenuView.swift */,
-				A2C4C2002C23CD4C002FEEAB /* NavBar.swift */,
-				A2C4C1FE2C23CD3A002FEEAB /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,7 +260,7 @@
 		BA5E60F62C2A6FE200BA943E /* ML Model */ = {
 			isa = PBXGroup;
 			children = (
-				BA5E60F92C2A702C00BA943E /* ChordDetection.mlmodel */,
+				FBFBCF892C39B6B600FE24C3 /* ChordDetection.mlpackage */,
 				BA5E60F72C2A700400BA943E /* chordModel.swift */,
 			);
 			path = "ML Model";
@@ -281,31 +277,74 @@
 			path = CombinedLevels;
 			sourceTree = "<group>";
 		};
-		BA5E610B2C2A70D800BA943E /* Level3 */ = {
+		BA5E610B2C2A70D800BA943E /* Level 3 */ = {
 			isa = PBXGroup;
 			children = (
 				BA5E61092C2A70D800BA943E /* Level3View.swift */,
 				BA5E610A2C2A70D800BA943E /* ModalLevel3.swift */,
 			);
-			path = Level3;
+			path = "Level 3";
 			sourceTree = "<group>";
 		};
-		BA5E610E2C2A70D800BA943E /* Level4 */ = {
+		BA5E610E2C2A70D800BA943E /* Level 4 */ = {
 			isa = PBXGroup;
 			children = (
 				BA5E610C2C2A70D800BA943E /* Level4View.swift */,
 				BA5E610D2C2A70D800BA943E /* ModalLevel4.swift */,
 			);
-			path = Level4;
+			path = "Level 4";
 			sourceTree = "<group>";
 		};
-		BA5E61112C2A70D800BA943E /* Level2 */ = {
+		BA5E61112C2A70D800BA943E /* Level 2 */ = {
 			isa = PBXGroup;
 			children = (
 				BA5E610F2C2A70D800BA943E /* Level2View.swift */,
 				BA5E61102C2A70D800BA943E /* ModalLevel2.swift */,
 			);
-			path = Level2;
+			path = "Level 2";
+			sourceTree = "<group>";
+		};
+		FB186E4B2C364BCB00A7DDF8 /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				A2C4C2002C23CD4C002FEEAB /* NavBar.swift */,
+				A2C4C1E92C23CC11002FEEAB /* MainMenuView.swift */,
+			);
+			path = "Main Menu";
+			sourceTree = "<group>";
+		};
+		FB31D38A2C2E3BE60034CEAF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A2B8E3542C1BDE87008A0E5A /* ChordJamApp.swift */,
+				FB186E492C364AB800A7DDF8 /* AppViewModel.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		FB31D38C2C2E3C0B0034CEAF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FB31D38E2C2E3C220034CEAF /* Source Data */,
+				FB31D38D2C2E3C180034CEAF /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FB31D38D2C2E3C180034CEAF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FB186E4C2C3659E100A7DDF8 /* GameCenterRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FB31D38E2C2E3C220034CEAF /* Source Data */ = {
+			isa = PBXGroup;
+			children = (
+				BA5E60F62C2A6FE200BA943E /* ML Model */,
+			);
+			path = "Source Data";
 			sourceTree = "<group>";
 		};
 		FB7D9CDC2C2A7FA300D47241 /* Components */ = {
@@ -320,6 +359,7 @@
 		FB7D9CDF2C2A7FA300D47241 /* Level 6 */ = {
 			isa = PBXGroup;
 			children = (
+				FBD1C2222C2C3CA9009D356F /* LearnSong.swift */,
 				FB7D9CDC2C2A7FA300D47241 /* Components */,
 				FB7D9CDD2C2A7FA300D47241 /* Level6View.swift */,
 				FB7D9CDE2C2A7FA300D47241 /* Level6ViewModel.swift */,
@@ -330,6 +370,7 @@
 		FB7D9CE62C2A7FCD00D47241 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				294FD0D32C29ACF100031E61 /* SuccessCase.swift */,
 				FB7D9CE32C2A7FCD00D47241 /* ChordModel.swift */,
 				FBD1C2242C2C52C7009D356F /* MusicPlayerState.swift */,
 				FB7D9CE42C2A7FCD00D47241 /* LyricModel.swift */,
@@ -356,13 +397,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		FB7D9CF22C2A8B8E00D47241 /* Level1 */ = {
+		FB7D9CF22C2A8B8E00D47241 /* Level 1 */ = {
 			isa = PBXGroup;
 			children = (
 				FB7D9CF02C2A8B8E00D47241 /* Level1View.swift */,
 				FB7D9CF12C2A8B8E00D47241 /* ModalLevel1.swift */,
 			);
-			path = Level1;
+			path = "Level 1";
 			sourceTree = "<group>";
 		};
 		FBD0B7E22C22BFDD0067F90D /* Frameworks */ = {
@@ -375,6 +416,8 @@
 		FBD1C21F2C2C1681009D356F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				290068E92C22A2A8000DCE81 /* OnboardImage.swift */,
+				290068E72C22A29E000DCE81 /* ProgressBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -527,13 +570,13 @@
 				A2C4C1F92C23CD04002FEEAB /* ChallengesView.swift in Sources */,
 				FB7D9CE72C2A7FCD00D47241 /* ChordModel.swift in Sources */,
 				BA5E61122C2A70D800BA943E /* Level3View.swift in Sources */,
-				A2B8E3572C1BDE87008A0E5A /* ContentView.swift in Sources */,
+				FB186E4A2C364AB800A7DDF8 /* AppViewModel.swift in Sources */,
 				BA5E611A2C2A70FC00BA943E /* FinishLevel.swift in Sources */,
-				BA5E60FA2C2A702C00BA943E /* ChordDetection.mlmodel in Sources */,
 				BA5714462C2C08F3004DD0A3 /* BadgeNotif.swift in Sources */,
 				294FD0D02C29394800031E61 /* LevelController.swift in Sources */,
-				290068EC2C22A2AE000DCE81 /* Introduction.swift in Sources */,
+				290068EC2C22A2AE000DCE81 /* IntroductionView.swift in Sources */,
 				FBD1C2252C2C52C7009D356F /* MusicPlayerState.swift in Sources */,
+				FBFBCF8A2C39B6B600FE24C3 /* ChordDetection.mlpackage in Sources */,
 				290069162C2511A5000DCE81 /* StringDetection.swift in Sources */,
 				BA5E61172C2A70D800BA943E /* ModalLevel2.swift in Sources */,
 				BA5E61142C2A70D800BA943E /* Level4View.swift in Sources */,
@@ -547,7 +590,7 @@
 				A2C4C1FB2C23CD1E002FEEAB /* LeaderboardView.swift in Sources */,
 				FBD1C2232C2C3CA9009D356F /* LearnSong.swift in Sources */,
 				FB7D9CE22C2A7FA300D47241 /* Level6ViewModel.swift in Sources */,
-				290068EE2C22A2B4000DCE81 /* Onboarding.swift in Sources */,
+				290068EE2C22A2B4000DCE81 /* OnboardingView.swift in Sources */,
 				BA5E61162C2A70D800BA943E /* Level2View.swift in Sources */,
 				FB7D9CF32C2A8B8E00D47241 /* Level1View.swift in Sources */,
 				290068E82C22A29F000DCE81 /* ProgressBar.swift in Sources */,
@@ -556,6 +599,7 @@
 				A2C4C1EC2C23CC36002FEEAB /* GameCenterManager.swift in Sources */,
 				BA5E61032C2A709000BA943E /* CombinedLevelsView.swift in Sources */,
 				A2C4C2012C23CD4C002FEEAB /* NavBar.swift in Sources */,
+				FB186E4D2C3659E100A7DDF8 /* GameCenterRepository.swift in Sources */,
 				BA5E61132C2A70D800BA943E /* ModalLevel3.swift in Sources */,
 				FB7D9CF42C2A8B8E00D47241 /* ModalLevel1.swift in Sources */,
 				A2C4C1FF2C23CD3A002FEEAB /* ProfileView.swift in Sources */,

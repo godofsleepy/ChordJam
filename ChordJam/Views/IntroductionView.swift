@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct Introduction: View {
+struct IntroductionView: View {
     @State var Opacity: Double = 0.0
     @State var showButton: Bool = false
     var onFinish: () -> Void
-    var onStartOnboarding: () -> Void // Added a new closure for starting onboarding
+    var onStartOnboarding: () -> Void
 
     var body: some View {
         ZStack {
@@ -40,7 +40,7 @@ struct Introduction: View {
                     }
                     .position(x: 277, y: 223)
                     Button(action: {
-                        onStartOnboarding() // Call the new closure when "No" is clicked
+                        onStartOnboarding()
                     }) {
                         Text("No")
                             .frame(width: 200, height: 52)
@@ -57,5 +57,5 @@ struct Introduction: View {
 }
 
 #Preview {
-    Introduction(onFinish: {}, onStartOnboarding: {})
+    IntroductionView(onFinish: {}, onStartOnboarding: {})
 }

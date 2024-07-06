@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Onboarding: View {
+struct OnboardingView: View {
     @State var showBar: Bool = false
     @State var progress: Int = 0
     @State var show1: Bool = true
@@ -55,7 +55,7 @@ struct Onboarding: View {
     @State private var detectedString: String? = nil
     @StateObject var stringDetection = StringDetection()
     @Binding var unlockedLevel: Int
-        
+    
     var body: some View {
         NavigationView{
             ZStack {
@@ -385,10 +385,10 @@ struct Onboarding: View {
                         }
                 }
                 if show36 {
-                                    NavigationLink(destination: MainMenuView(unlockedLevel: $unlockedLevel).navigationBarBackButtonHidden()) {
-                                        OnboardImage(Onboard: "Finishing Onboarding")
-                                    }
-                                }
+                    NavigationLink(destination: MainMenuView(unlockedLevel: $unlockedLevel).navigationBarBackButtonHidden()) {
+                        OnboardImage(Onboard: "Finishing Onboarding")
+                    }
+                }
                 if showBar {
                     ProgressBar(progress: CGFloat(progress), total: 90)
                         .padding(.trailing, 410)
@@ -559,5 +559,5 @@ struct Onboarding: View {
 }
 
 #Preview {
-    Onboarding(unlockedLevel: .constant(1))
+    OnboardingView(unlockedLevel: .constant(1))
 }

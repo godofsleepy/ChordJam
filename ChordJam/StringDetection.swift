@@ -81,6 +81,10 @@ class StringDetection: ObservableObject, HasAudioEngine {
         engine.stop()
     }
     
+    deinit {
+        stop()
+    }
+    
     func update(_ pitch: AUValue, _ amp: AUValue) {
         guard amp > 0.2 else { return }
         

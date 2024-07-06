@@ -23,25 +23,22 @@ class GameCenterManager: NSObject, ObservableObject {
     }
     
     func authenticatePlayer() {
-        GKLocalPlayer.local.authenticateHandler = { viewController, error in
-            if let viewController = viewController {
-                // Present the view controller so the player can sign in to Game Center
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                    windowScene.windows.first?.rootViewController?.present(viewController, animated: true)
+        let localPlayer = GKLocalPlayer.local
+                localPlayer.authenticateHandler = { viewController, error in
+                    if let viewController = viewController {
+                        if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+                            rootViewController.present(viewController, animated: true, completion: nil)
+                        }
+                    } else if localPlayer.isAuthenticated {
+                        print("Player authenticated")
+                        self.isAuthenticated = true
+                    } else {
+                        if let error = error {
+                            print("Authentication error: \(error.localizedDescription)")
+                        }
+                        self.isAuthenticated = false
+                    }
                 }
-            } else if GKLocalPlayer.local.isAuthenticated {
-                // Player is authenticated
-                self.isAuthenticated = true
-                self.playerAlias = GKLocalPlayer.local.alias
-                print("Player authenticated: \(GKLocalPlayer.local.alias)")
-            } else {
-                // Authentication failed
-                self.isAuthenticated = false
-                if let error = error {
-                    print("Game Center authentication failed: \(error.localizedDescription)")
-                }
-            }
-        }
     }
     
     func showLeaderboard() {
@@ -53,7 +50,7 @@ class GameCenterManager: NSObject, ObservableObject {
         }
     }
     
-    func reportScore(score: Int64, forLeaderboardID leaderboardID: String) {
+    func reportScore(score: Int64) {
         let scoreReporter = GKScore(leaderboardIdentifier: leaderboardID)
         scoreReporter.value = score
         GKScore.report([scoreReporter]) { error in

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LearnSong: View {
+struct IntroductionLevel6View: View {
     @State var Opacity: Double = 0.0
     @Binding var unlockedLevel: Int
     
@@ -32,5 +32,5 @@ struct LearnSong: View {
 }
 
 #Preview {
-    LearnSong(unlockedLevel: .constant(6))
+    IntroductionLevel6View(unlockedLevel: .constant(6))
 }

@@ -36,6 +36,10 @@ class chordModel: NSObject, ObservableObject, SNResultsObserving {
     
     let analysisQueue = DispatchQueue(label: "com.apple.AnalysisQueue")
     
+    deinit {
+        audioEngine.stop()
+    }
+    
     
     func setupAudioSession() {
            do {
@@ -57,6 +61,10 @@ class chordModel: NSObject, ObservableObject, SNResultsObserving {
                print("Failed to set up audio session: \(error.localizedDescription)")
            }
        }
+    
+    func stop() {
+        audioEngine.stop()
+    }
     
     func startAudioEngine(){
         setupAudioSession()

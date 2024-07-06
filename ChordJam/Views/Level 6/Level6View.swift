@@ -82,6 +82,12 @@ struct Level6View: View {
                     }
                     
                     if(viewModel.musicPlayerState != MusicPlayerState.pause){
+                        Text(viewModel.point.description)
+                            .foregroundColor(.white)
+                            .offset(y: -160)
+                    }
+                    
+                    if(viewModel.musicPlayerState != MusicPlayerState.pause){
                         Button(action: {
                             viewModel.pauseMusic()
                         }, label: {
@@ -101,6 +107,9 @@ struct Level6View: View {
         .background(
             LinearGradient(gradient: Gradient(colors: [Color(hex: "2A2A2A"), Color(hex: "434343")]), startPoint: .leading, endPoint: .trailing)
         )
+        .onDisappear{
+            manager.stop()
+        }
         .task{
             manager.startAudioEngine()
         }

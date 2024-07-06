@@ -105,7 +105,7 @@ struct MainMenuView: View {
                             label: { EmptyView() }
                         )
                         NavigationLink(
-                            destination: LearnSong(unlockedLevel: $unlockedLevel).navigationBarBackButtonHidden(),
+                            destination: IntroductionLevel6View(unlockedLevel: $unlockedLevel).navigationBarBackButtonHidden(),
                             isActive: $navigateToLevel5,
                             label: { EmptyView() }
                         )
