@@ -8,103 +8,66 @@
 import SwiftUI
 
 struct BadgeNotif: View {
-    
-    @State private var imageText : String = ""
-    @State private var badgeText : String = ""
     @State private var showBadge: Bool = false
-    
-    @StateObject private var manager = chordModel()
-//    @Binding var unlockedLevel: Int
 
-    
-    
+    private let level = UserDefaults.standard.integer(forKey: "LevelSekarang")
+
     var body: some View {
-        ZStack(alignment: .leading){
-//            Text("Adf")
+        ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 30)
                 .frame(width: 275, height: 45)
-                .foregroundStyle(Color(CGColor(srgbRed: 255/255.0, green: 193/255.0, blue: 7/255.0, alpha: 1)))
-            
-            HStack{
-                Image(getImageText(level: UserDefaults.standard.integer(forKey: "LevelSekarang")))
+                .foregroundStyle(Color(hex: "FFC107"))
+
+            HStack {
+                Image(badgeImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 31, height: 31)
-                
-                VStack(alignment: .leading){
+
+                VStack(alignment: .leading) {
                     Text("Badge earned")
                         .fontWeight(.light)
-                    Text(getBadgeText(level: UserDefaults.standard.integer(forKey: "LevelSekarang")))
+                    Text(badgeText)
                         .fontWeight(.bold)
                 }
                 .font(.callout)
                 .multilineTextAlignment(.leading)
                 .foregroundStyle(Color.white)
-                
             }
             .padding()
-            
         }
-        .background(Color.clear)
-                        .offset(y: showBadge ? 0 : -UIScreen.main.bounds.height)
-                        .animation(.easeInOut(duration: 1), value: showBadge)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                withAnimation {
-                                    showBadge = false
-                                }
-                            }
-                        }
-                        .onAppear {
-                                    withAnimation {
-                                        showBadge = true
-                                    }
-                                }
-        
-        
+        .offset(y: showBadge ? 0 : -UIScreen.main.bounds.height)
+        .animation(.easeInOut(duration: 1), value: showBadge)
+        .onAppear {
+            withAnimation { showBadge = true }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation { showBadge = false }
+            }
+        }
     }
-    
-    func getBadgeText(level: Int) -> String{
-        if level == 1 {
-            return "Learning C Major"
+
+    private var badgeText: String {
+        switch level {
+        case 1: return "Learning C Major"
+        case 2: return "Learning Am Major"
+        case 3: return "Learning G Major"
+        case 4: return "Learning Dm Major"
+        case 5: return "Learning One Song"
+        default: return "NULL"
         }
-        else if level == 2 {
-            return "Learning Am Major"
-        }
-        else if level == 3 {
-            return "Learning G Major"
-        }
-        else if level == 4 {
-            return "Learning Dm Major"
-        }
-        else if level == 5 {
-            return "Learning One Song"
-        }
-        return "NULL"
     }
-    
-    func getImageText(level: Int) -> String{
-        if level == 1 {
-            return "BadgeC"
+
+    private var badgeImage: String {
+        switch level {
+        case 1: return "BadgeC"
+        case 2: return "BadgeAm"
+        case 3: return "BadgeG"
+        case 4: return "BadgeDm"
+        case 5: return "oneSong"
+        default: return "NULL"
         }
-        else if level == 2 {
-            return "BadgeAm"
-        }
-        else if level == 3 {
-            return "BadgeG"
-        }
-        else if level == 4 {
-            return "BadgeDm"
-        }
-        else if level == 5 {
-            return "oneSong"
-        }
-        return "NULL"
     }
-    
 }
-
-
 
 #Preview {
     BadgeNotif()

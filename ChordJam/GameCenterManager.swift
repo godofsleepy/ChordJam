@@ -45,18 +45,15 @@ class GameCenterManager: NSObject, ObservableObject {
     }
     
     func showLeaderboard() {
-        let viewController = GKGameCenterViewController(state: .leaderboards)
+        let viewController = GKGameCenterViewController(leaderboardID: leaderboardID, playerScope: .global, timeScope: .allTime)
         viewController.gameCenterDelegate = self
-        viewController.leaderboardIdentifier = leaderboardID // Set the leaderboard ID
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             windowScene.windows.first?.rootViewController?.present(viewController, animated: true)
         }
     }
     
     func reportScore(score: Int64, forLeaderboardID leaderboardID: String) {
-        let scoreReporter = GKScore(leaderboardIdentifier: leaderboardID)
-        scoreReporter.value = score
-        GKScore.report([scoreReporter]) { error in
+        GKLeaderboard.submitScore(Int(score), context: 0, player: GKLocalPlayer.local, leaderboardIDs: [leaderboardID]) { error in
             if let error = error {
                 print("Error reporting score: \(error.localizedDescription)")
             }

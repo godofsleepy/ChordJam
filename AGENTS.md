@@ -48,7 +48,8 @@ ChordJam/
   Utils/                   Color helpers, BadgeNotif
   Views/
     MainMenuView.swift     Level map. Uses NavigationLink(isActive:) to push levels
-    Level1..Level4/        One chord level each (LevelNView + ModalLevelN)
+    ChordPracticeView.swift Shared screen for chord levels 1-4 (ChordLevel config: .c, .am, .g, .dm)
+    Level1..Level4/        Thin LevelNView wrappers around ChordPracticeView, plus ModalLevelN intros
     CombinedLevels/        Wrappers that chain the level views
     Level 6/               Song-play mode (Level6View, Level6ViewModel, Components/)
     ProfileView, LeaderboardView, CollectionView, ChallengesView, NavBar, FinishLevel
@@ -59,7 +60,7 @@ ChordJam/
 ## How it works
 
 - **Navigation:** `ContentView` picks the screen from a `currentView` string. `unlockedLevel` is a `@Binding` passed down to every level.
-- **Chord detection:** `chordModel` runs `AVAudioEngine` into `SNAudioStreamAnalyzer` with `ChordDetection.mlmodel`. It accepts a prediction above 60% confidence and adds points per level, keyed on `currentLevel`.
+- **Chord detection:** `chordModel` runs `AVAudioEngine` into `SNAudioStreamAnalyzer` with `ChordDetection.mlmodel`. It accepts a prediction above 60% confidence. In levels 1-4 each `practiceChord` hit (currently Am for every level) adds 30 points; 90 clears the level. Call `stopAudioEngine()` when leaving a level.
 - **Song mode (Level 6):** `Level6ViewModel` uses a `Timer` to scroll the chords and lyrics (`[ChordModel]` and `[LyricModel]` with timestamps) against an `AVAudioPlayer`.
 - **Persistence:** `UserDefaults` only. Keys: `LevelSekarang` (current level), `streakDays`, `lastOpenDate`.
 

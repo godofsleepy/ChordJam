@@ -11,272 +11,85 @@ import AVKit
 import SoundAnalysis
 
 class chordModel: NSObject, ObservableObject, SNResultsObserving {
-    
+    /// Every practice level (1–4) currently listens for Am, as in the original game.
+    static let practiceChord = "Am"
+    static let pointsPerHit = 30.0
+    static let pointsToClear = 90.0
+    static let minConfidence = 60.0
+
     @Published var predictionResult: String = ""
     @Published var classifiedConfidence: Double = 0.0
-    
-    @Published var pointsC : Double = 0.0
-    @Published var pointsAm : Double = 0.0
-    @Published var pointsDm : Double = 0.0
-    @Published var pointsG : Double = 0.0
-    
-    @Published var nextLevel = 2
-    
-    @Published var currentLevel : Int = 0
-    
-    //    var status1 = Level1View().levelStatus
-    //    var status2 = Level2View().levelStatus
-    //    var status3 = Level3View().levelStatus
-    
-    
+    @Published var pointsAm: Double = 0.0
+    @Published var currentLevel: Int = 0
+
     let audioEngine = AVAudioEngine()
-    private var chordClassifierModel = try! ChordDetection(configuration: .init())
-    var inputFormat: AVAudioFormat!
-    var analyzer: SNAudioStreamAnalyzer!
-    
-    let analysisQueue = DispatchQueue(label: "com.apple.AnalysisQueue")
-    
-    
+    private let chordClassifierModel = try! ChordDetection(configuration: .init())
+    private var analyzer: SNAudioStreamAnalyzer?
+    private let analysisQueue = DispatchQueue(label: "com.apple.AnalysisQueue")
+
     func setupAudioSession() {
-           do {
-               let audioSession = AVAudioSession.sharedInstance()
-               // Set the category to play and record with options to allow Bluetooth and default to speaker
-               try audioSession.setCategory(.playAndRecord, mode: .default, options: [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker])
-               try audioSession.setActive(true)
-               
-               // Override output to force audio to headphones if available
-               if let availableInputs = audioSession.availableInputs {
-                   for input in availableInputs {
-                       if input.portType == .headsetMic || input.portType == .bluetoothA2DP {
-                           try audioSession.setPreferredInput(input)
-                           break
-                       }
-                   }
-               }
-           } catch {
-               print("Failed to set up audio session: \(error.localizedDescription)")
-           }
-       }
-    
-    func startAudioEngine(){
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker])
+            try audioSession.setActive(true)
+
+            // Prefer a headset or Bluetooth mic when one is connected
+            if let input = audioSession.availableInputs?.first(where: { $0.portType == .headsetMic || $0.portType == .bluetoothA2DP }) {
+                try audioSession.setPreferredInput(input)
+            }
+        } catch {
+            print("Failed to set up audio session: \(error.localizedDescription)")
+        }
+    }
+
+    func startAudioEngine() {
         setupAudioSession()
-        
-        inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
-        analyzer = SNAudioStreamAnalyzer(format: inputFormat)
-        
-        //        print("masuk audio engine")
-        
-        do{
-            
+
+        let inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
+        let analyzer = SNAudioStreamAnalyzer(format: inputFormat)
+        do {
             let request = try SNClassifySoundRequest(mlModel: chordClassifierModel.model)
-            
-            print(request)
-            
             try analyzer.add(request, withObserver: self)
-            
-        }catch{
-            print("unable to prepare req: \(error.localizedDescription)")
+        } catch {
+            print("Unable to prepare request: \(error.localizedDescription)")
             return
         }
-        
-        
-        
-        audioEngine.inputNode.installTap(onBus: 0, bufferSize: 8000, format: inputFormat) { buffer, time in
-            self.analysisQueue.async {
-                self.analyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
+        self.analyzer = analyzer
+
+        audioEngine.inputNode.removeTap(onBus: 0)
+        audioEngine.inputNode.installTap(onBus: 0, bufferSize: 8000, format: inputFormat) { [weak self] buffer, time in
+            self?.analysisQueue.async {
+                self?.analyzer?.analyze(buffer, atAudioFramePosition: time.sampleTime)
             }
         }
-        
-        
-        do{
+
+        do {
             try audioEngine.start()
-            
-        }catch( _){
-            print("error starting audio engine")
-        }
-        
-    }
-    
-    func displayPredictionResult(identifier: String, confidence: Double) {
-        DispatchQueue.main.async {
-            self.predictionResult = identifier
-            //            print(self.predictionResult)
-            self.classifiedConfidence = confidence
+        } catch {
+            print("Error starting audio engine: \(error.localizedDescription)")
         }
     }
-    
+
+    func stopAudioEngine() {
+        audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: 0)
+    }
+
     func request(_ request: any SNRequest, didProduce result: any SNResult) {
         guard let result = result as? SNClassificationResult,
-              let classification = result.classifications.first else {return}
-        
+              let classification = result.classifications.first else { return }
+
         let confidence = classification.confidence * 100.0
-        
-        if confidence > 60{
-            //            delegate?.displayPredictionResult(identifier: classification.identifier, confidence: confidence)
-            DispatchQueue.main.async{
-                self.predictionResult = classification.identifier
-                self.classifiedConfidence = confidence
+        guard confidence > chordModel.minConfidence else { return }
+
+        let identifier = classification.identifier
+        DispatchQueue.main.async {
+            self.predictionResult = identifier
+            self.classifiedConfidence = confidence
+
+            if (1...4).contains(self.currentLevel) && identifier == chordModel.practiceChord {
+                self.pointsAm += chordModel.pointsPerHit
             }
-            
-            //            predictionResult = classification.identifier
-            //            classifiedConfidence = confidence
-            print("Pred: \(predictionResult) -- Confidence: \(confidence)")
-            //            print(classifiedConfidence)
-            
-            
-            if currentLevel == 10 {
-                //                print("ini level 1")
-                if predictionResult == "Am"{
-                    DispatchQueue.main.async {
-                        self.objectWillChange.send()
-                        self.pointsC += 30
-                        self.pointsAm = 0
-                        self.pointsDm = 0
-                        self.pointsG = 0
-//                        self.currentLevel = 1
-//                        print(self.currentLevel)
-                    }
-                    //                updatePoints(points: pointsC)
-                    print(pointsC)
-                    
-                    if pointsC >= 90.0{
-                        //                    print("Lanjut Om!")
-                        pointsAm = 0
-                        pointsDm = 0
-                        pointsG = 0
-                        nextLevel = 2
-//                        currentLevel = 1
-                        
-                        //                        DispatchQueue.main.async{
-                        //                            self.objectWillChange.send()
-                        //                            self.currentLevel = 1
-                        //                        }
-                        return
-                    }
-                }
-            }else if currentLevel == 1 || currentLevel == 2 || currentLevel == 3 ||  currentLevel == 4{
-                //                print("ini level 2")
-                if predictionResult == "Am"{
-                    DispatchQueue.main.async {
-                        self.objectWillChange.send()
-                        self.pointsAm += 30
-                        self.pointsC = 0
-                        self.pointsDm = 0
-                        self.pointsG = 0
-                    }
-                    //                updatePoints(points: pointsC)
-                    print(pointsAm)
-                    
-                    if pointsAm >= 90.0{
-                        //                    print("Lanjut Om!")
-                        pointsC = 0
-                        pointsDm = 0
-                        pointsG = 0
-                        nextLevel = 3
-                        
-                        //                        DispatchQueue.main.async{
-                        //                            self.objectWillChange.send()
-                        //                            self.currentLevel = 2
-                        //                        }
-                        
-                        return
-                    }
-                }
-            }
-            else if currentLevel == 13 {
-                //                print("ini level 3")
-                
-                //Ganti nnti
-                if predictionResult == "Am"{
-                    DispatchQueue.main.async {
-                        self.objectWillChange.send()
-                        self.pointsG += 30
-                        self.pointsC = 0
-                        self.pointsDm = 0
-                        self.pointsAm = 0
-                    }
-                    //                updatePoints(points: pointsC)
-                    print(pointsG)
-                    
-                    if pointsG >= 90.0{
-                        //                    print("Lanjut Om!")
-                        pointsC = 0
-                        pointsDm = 0
-                        pointsAm = 0
-                        nextLevel = 3
-                        
-                        //                        DispatchQueue.main.async{
-                        //                            self.objectWillChange.send()
-                        //                            self.currentLevel = 3
-                        //                        }
-                        return
-                    }
-                }
-            }
-            else if currentLevel == 14 {
-                //                print("ini level 3")
-                if predictionResult == "Am"{
-                    DispatchQueue.main.async {
-                        self.objectWillChange.send()
-                        self.pointsDm += 30
-                        self.pointsC = 0
-                        self.pointsAm = 0
-                        self.pointsG = 0
-                    }
-                    //                updatePoints(points: pointsC)
-                    print(pointsDm)
-                    
-                    if pointsDm >= 90.0{
-                        //                    print("Lanjut Om!")
-                        pointsC = 0
-                        pointsAm = 0
-                        pointsG = 0
-                        nextLevel = 5
-                        
-                        //                        DispatchQueue.main.async{
-                        //                            self.objectWillChange.send()
-                        //                            self.currentLevel = 4
-                        //                        }
-                        return
-                    }
-                }
-            }
-            else if currentLevel == 15 {
-                //                print("ini level 3")
-                if predictionResult == "Am"{
-                    DispatchQueue.main.async {
-                        self.objectWillChange.send()
-                        self.pointsDm += 30
-                        self.pointsC = 0
-                        self.pointsAm = 0
-                        self.pointsG = 0
-                    }
-                    //                updatePoints(points: pointsC)
-                    print(pointsDm)
-                    
-                    if pointsDm >= 90.0{
-                        //                    print("Lanjut Om!")
-                        pointsC = 0
-                        pointsAm = 0
-                        pointsG = 0
-                        nextLevel = 5
-                        
-                        //                        DispatchQueue.main.async{
-                        //                            self.objectWillChange.send()
-                        //                            self.currentLevel = 4
-                        //                        }
-                        return
-                    }
-                }
-            }
-            
-            
-            
-            
-            
         }
     }
-    
-    
-    
 }

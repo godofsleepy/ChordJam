@@ -2,12 +2,9 @@ import SwiftUI
 
 struct FinishLevel: View {
     @Binding var unlockedLevel: Int
-    @StateObject var manager = chordModel()
     @State private var navigateToMainMenu = false
     @EnvironmentObject var gameCenterManager: GameCenterManager
-    
-    @State private var showNotification = false
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -36,7 +33,6 @@ struct FinishLevel: View {
                         })
 
                         Button(action: {
-                            unlockNextLevel()
                             navigateToMainMenu = true
                         }, label: {
                             Image("ContinueButton")
@@ -46,56 +42,23 @@ struct FinishLevel: View {
                         })
                     }
                     .padding()
-                    NavigationLink(destination: MainMenuView(unlockedLevel: $unlockedLevel).environmentObject(gameCenterManager).onAppear {
-                        unlockNextLevel()
-                    }, isActive: $navigateToMainMenu) {
+                    NavigationLink(destination: MainMenuView(unlockedLevel: $unlockedLevel).environmentObject(gameCenterManager), isActive: $navigateToMainMenu) {
                         EmptyView()
                     }
                     .navigationBarBackButtonHidden(true)
                 }
             }
             .ignoresSafeArea()
-            
-//            if showNotification{
-//                BadgeNotif()
-//                    .offset(y: -100)
-////                    .padding(.top, 50)
-//            }
-            
         }
         .navigationBarBackButtonHidden(true)
-//        .onAppear{
-//            withAnimation{
-//                showNotification = true
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                withAnimation {
-//                    showNotification = false
-//                }
-//            }
-//    
-//        }
         .overlay(
-                        BadgeNotif()
-                            .offset(y: -150) // Adjust this value to control the starting position
-                    )
-    }
-
-    private func unlockNextLevel() {
-        if manager.currentLevel == 1 && unlockedLevel < 2 {
-            unlockedLevel = 2
-        } else if manager.currentLevel == 2 && unlockedLevel < 3 {
-            unlockedLevel = 3
-        } else if manager.currentLevel == 3 && unlockedLevel < 4 {
-            unlockedLevel = 4
-        } else if manager.currentLevel == 4 && unlockedLevel < 5 {
-            unlockedLevel = 5
-        } else if manager.currentLevel == 5 && unlockedLevel < 6 {
-            unlockedLevel = 6
-        }
+            BadgeNotif()
+                .offset(y: -150)
+        )
     }
 }
 
 #Preview {
     FinishLevel(unlockedLevel: .constant(1))
+        .environmentObject(GameCenterManager.shared)
 }
