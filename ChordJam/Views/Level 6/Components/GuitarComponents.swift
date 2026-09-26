@@ -17,11 +17,7 @@ struct FretView: View {
             ForEach(0..<6) { string in
                 StringView(
                     thickness: CGFloat(1 + Float(string) * 0.5)
-                ).overlay {
-                    HStack {
-                        //                        NoteView(note: "\(index)")
-                    }.offset(x: -50)
-                }
+                )
             }
         }
         .background(.black)
@@ -167,22 +163,6 @@ struct ChordView: View {
         } else {
             return 0
         }
-    }
-}
-
-struct NoteView: View {
-    @State private var isTapped = false
-    var note: String
-    
-    var body: some View {
-        Text(note)
-            .foregroundColor(.black)
-            .padding(.all, 5)
-            .background(isTapped ? Color.blue : Color.white)
-            .cornerRadius(10)
-            .onTapGesture {
-                isTapped.toggle()
-            }
     }
 }
 

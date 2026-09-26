@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0DE00022E00000000000001 /* ChordPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE00012E00000000000001 /* ChordPracticeView.swift */; };
 		290068E82C22A29F000DCE81 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068E72C22A29E000DCE81 /* ProgressBar.swift */; };
 		290068EA2C22A2A8000DCE81 /* OnboardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068E92C22A2A8000DCE81 /* OnboardImage.swift */; };
 		290068EC2C22A2AE000DCE81 /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290068EB2C22A2AE000DCE81 /* Introduction.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C0DE00012E00000000000001 /* ChordPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordPracticeView.swift; sourceTree = "<group>"; };
 		290068E72C22A29E000DCE81 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		290068E92C22A2A8000DCE81 /* OnboardImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardImage.swift; sourceTree = "<group>"; };
 		290068EB2C22A2AE000DCE81 /* Introduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				A2C4C1F82C23CD04002FEEAB /* ChallengesView.swift */,
 				A2C4C1FC2C23CD2D002FEEAB /* CollectionView.swift */,
+				C0DE00012E00000000000001 /* ChordPracticeView.swift */,
 				BA5E61182C2A70FC00BA943E /* FinishLevel.swift */,
 				BA5E60FF2C2A709000BA943E /* CombinedLevels */,
 				FBD1C21F2C2C1681009D356F /* Components */,
@@ -550,6 +553,7 @@
 				290068EE2C22A2B4000DCE81 /* Onboarding.swift in Sources */,
 				BA5E61162C2A70D800BA943E /* Level2View.swift in Sources */,
 				FB7D9CF32C2A8B8E00D47241 /* Level1View.swift in Sources */,
+				C0DE00022E00000000000001 /* ChordPracticeView.swift in Sources */,
 				290068E82C22A29F000DCE81 /* ProgressBar.swift in Sources */,
 				FB7D9CE12C2A7FA300D47241 /* Level6View.swift in Sources */,
 				BA5E61012C2A709000BA943E /* CombinedLevels3View.swift in Sources */,

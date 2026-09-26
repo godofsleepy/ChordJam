@@ -1,10 +1,8 @@
 import SwiftUI
 
 struct Level6View: View {
-    @ObservedObject var viewModel = Level6ViewModel()
+    @StateObject var viewModel = Level6ViewModel()
     @StateObject var manager = chordModel()
-    @StateObject var detection = StringDetection()
-    @State private var currentChordIndex = 0
     @State private var viewLoaded: Bool = false
     @State private var level  = 6
     @State private var navigate = false
@@ -104,8 +102,12 @@ struct Level6View: View {
         .task{
             manager.startAudioEngine()
         }
+        .onDisappear {
+            manager.stopAudioEngine()
+        }
         .onReceive(viewModel.$isEnd, perform: { isEnd in
             if isEnd {
+                manager.stopAudioEngine()
                 showNextLevelView = true
                 unlockedLevel = max(unlockedLevel, 5)
                 manager.currentLevel = 5
