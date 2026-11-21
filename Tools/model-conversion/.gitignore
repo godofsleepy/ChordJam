@@ -1,0 +1,5 @@
+*.mlmodel
+*.mlpackage
+.venv/
+dataset/
+hf-cache/

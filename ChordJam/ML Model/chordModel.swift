@@ -11,16 +11,16 @@ import AVKit
 import SoundAnalysis
 
 class chordModel: NSObject, ObservableObject, SNResultsObserving {
-    /// Every practice level (1–4) currently listens for Am, as in the original game.
-    static let practiceChord = "Am"
     static let pointsPerHit = 30.0
     static let pointsToClear = 90.0
     static let minConfidence = 60.0
 
     @Published var predictionResult: String = ""
     @Published var classifiedConfidence: Double = 0.0
-    @Published var pointsAm: Double = 0.0
+    @Published var points: Double = 0.0
     @Published var currentLevel: Int = 0
+    /// Chord the current practice level scores (a model label such as "C" or "Am"). Nil means no scoring.
+    var targetChord: String?
 
     let audioEngine = AVAudioEngine()
     private let chordClassifierModel = try! ChordDetection(configuration: .init())
@@ -87,8 +87,8 @@ class chordModel: NSObject, ObservableObject, SNResultsObserving {
             self.predictionResult = identifier
             self.classifiedConfidence = confidence
 
-            if (1...4).contains(self.currentLevel) && identifier == chordModel.practiceChord {
-                self.pointsAm += chordModel.pointsPerHit
+            if (1...4).contains(self.currentLevel) && identifier == self.targetChord {
+                self.points += chordModel.pointsPerHit
             }
         }
     }

@@ -11,11 +11,13 @@ struct ChordLevel {
     let number: Int
     let title: String
     let fretImage: String
+    /// Chord the player must strum to score on this level
+    let chord: ChordType
 
-    static let c = ChordLevel(number: 1, title: "C Major Chord", fretImage: "FretC")
-    static let am = ChordLevel(number: 2, title: "A Minor Chord", fretImage: "FretAm")
-    static let g = ChordLevel(number: 3, title: "G Major Chord", fretImage: "FretG")
-    static let dm = ChordLevel(number: 4, title: "D Minor Chord", fretImage: "FretDm")
+    static let c = ChordLevel(number: 1, title: "C Major Chord", fretImage: "FretC", chord: .C)
+    static let am = ChordLevel(number: 2, title: "A Minor Chord", fretImage: "FretAm", chord: .Am)
+    static let g = ChordLevel(number: 3, title: "G Major Chord", fretImage: "FretG", chord: .G)
+    static let dm = ChordLevel(number: 4, title: "D Minor Chord", fretImage: "FretDm", chord: .Dm)
 }
 
 struct ChordPracticeView: View {
@@ -34,7 +36,7 @@ struct ChordPracticeView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                     VStack {
-                        ProgressBar(progress: manager.pointsAm, total: Int(chordModel.pointsToClear))
+                        ProgressBar(progress: manager.points, total: Int(chordModel.pointsToClear))
 
                         Text(level.title)
                             .font(.largeTitle)
@@ -65,9 +67,10 @@ struct ChordPracticeView: View {
         .ignoresSafeArea()
         .onAppear {
             manager.currentLevel = level.number
+            manager.targetChord = level.chord.rawValue
             manager.startAudioEngine()
         }
-        .onChange(of: manager.pointsAm >= chordModel.pointsToClear) { _, cleared in
+        .onChange(of: manager.points >= chordModel.pointsToClear) { _, cleared in
             guard cleared else { return }
             UserDefaults.standard.set(level.number, forKey: "LevelSekarang")
             manager.stopAudioEngine()
